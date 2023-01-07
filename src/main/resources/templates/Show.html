@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listing All</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+<body>
+    <div th:replace="Home :: manu">
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12 text-nowrap">
+                <div class="table-responsive">
+                    <table class="table table-stripped p-3 shadow">
+                        <thead>
+                            <tr>
+                                <th>Stock ID</th><th>Stock Name</th><th>Stock Brand</th>
+                                <th>Stock Type</th><th>Stock Size</th><th>Stock Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="sim:${data}">
+                                <td>
+                                    <a th:href="@{'/'+${sim.getStock_id()}}">
+                                        <span th:text="${sim.getStock_id()}" class="text-decoration-none text-info"></span>
+                                    </a>
+                                    <a class="btn btn-outline-danger" th:href="@{'/dele/'+${sim.getStock_id()}}">
+                                        <i class="bi bi-database-fill-x"></i>
+                                    </a>
+                                </td>
+                                <td><p th:text="${sim.getStock_name()}"></p></td>
+                                <td><p th:text="${sim.getStock_brand()}"></p></td>
+                                <td><p th:text="${sim.getStock_type()}"></p></td>
+                                <td><p th:text="${sim.getStock_size()}"></p></td>
+                                <td><p th:text="${sim.getStock_cost()}"></p></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
