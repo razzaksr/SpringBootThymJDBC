@@ -31,7 +31,13 @@
             <a class="nav-link active" aria-current="page" th:href="@{/new}">New</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/view">Show</a>
+            <a class="nav-link" th:href="@{/view}">Show</a>
+          </li>
+          <li class="nav-item">
+<!--            <a class="nav-link" th:href="@{/logout}">Logout</a>-->
+            <form th:action="@{/logout}" method="post">
+              <input class="btn btn-outline-danger" type="submit" value="Logout" />
+            </form>
           </li>
         </ul>
       </div>
