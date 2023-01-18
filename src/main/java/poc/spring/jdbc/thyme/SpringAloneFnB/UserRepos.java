@@ -21,7 +21,9 @@ public class UserRepos implements UserDetailsService {
     }
 
     public Users findByUsername(String username){
-        Users users=temp.queryForObject("select * from users where username=?",new Object[]{username},new BeanPropertyRowMapper<Users>(Users.class));
+        Users users=temp.queryForObject("select * from users where username=?",
+                new Object[]{username},
+                new BeanPropertyRowMapper<Users>(Users.class));
         return users;
     }
 

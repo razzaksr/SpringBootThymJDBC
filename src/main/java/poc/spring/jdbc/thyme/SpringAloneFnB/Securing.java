@@ -24,10 +24,10 @@ public class Securing {
 
     AuthenticationManager manager;
 
-//    @Bean
-//    public WebSecurityCustomizer share() {
-//        return(web)->web.ignoring().requestMatchers("/login");
-//    }
+    @Bean
+    public WebSecurityCustomizer share() {
+        return(web)->web.ignoring().requestMatchers("/signup","/subs");
+    }
 
     @Bean
     InMemoryUserDetailsManager inMemoryUserDetailsManager(){

@@ -4,7 +4,7 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class SpringAloneFnBApplication {
@@ -21,7 +21,7 @@ public class SpringAloneFnBApplication {
 
 //	@PostConstruct
 //	public void hai(){
-//		Users u=new Users("razak", encoder.encode("mohamed"), 6545676534L);
+//		Users u=new Users("sheik", encoder.encode("sheik"), 6545676534L);
 //		System.out.println(repo.newUsers(u));
 //	}
 

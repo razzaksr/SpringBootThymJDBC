@@ -1,7 +1,7 @@
 package poc.spring.jdbc.thyme.SpringAloneFnB;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +15,9 @@ public class Troller {
 
     @Autowired
     UserRepos reps;
-//
-//    @Autowired
-//    PasswordEncoder encoder;
+
+    @Autowired
+    PasswordEncoder encoder;
 
     @GetMapping("/")
     public String base(){
@@ -41,13 +41,15 @@ public class Troller {
         return "signup";
     }
 
-//    @PostMapping("/sub")
-//    public String newLoad(Model model,Users users){
-//        users.setPassword(encoder.encode(users.getPassword()));
-//        String info=reps.newUsers(users);
-//        System.out.println(info);
-//        return "login";
-//    }
+    @PostMapping("/subs")
+    public String newLoad(Model model,Users users){
+        System.out.println("Received");
+        users.setPassword(encoder.encode(users.getPassword()));
+        System.out.println(users);
+        String info=reps.newUsers(users);
+        System.out.println(info);
+        return "redirect:/login";
+    }
 
     @GetMapping("/dele/{id}")
     public String requestDelete(Model mod, @PathVariable("id") int id){
