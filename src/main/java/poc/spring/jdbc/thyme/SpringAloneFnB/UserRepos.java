@@ -3,14 +3,14 @@ package poc.spring.jdbc.thyme.SpringAloneFnB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserRepos{// implements UserDetailsService {
+public class UserRepos implements UserDetailsService {
 
     @Autowired
     JdbcTemplate temp;
@@ -25,12 +25,12 @@ public class UserRepos{// implements UserDetailsService {
         return users;
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Users u=findByUsername(username);
-//        if(u==null){
-//            throw new UsernameNotFoundException(username);
-//        }
-//        return u;
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Users u=findByUsername(username);
+        if(u==null){
+            throw new UsernameNotFoundException(username);
+        }
+        return u;
+    }
 }
